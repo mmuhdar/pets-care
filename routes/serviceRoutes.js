@@ -1,8 +1,9 @@
 "use strict";
 
-const router = require("express").Router()
-const Controller = require("../controllers/serviceController")
+const router = require("express").Router();
+const Controller = require("../controllers/serviceController");
 
-router.get("/", Controller.listServices)
+router.get("/add", Controller.formAddService);
+router.post("/add", Controller.addService)
 
-module.exports = router
+module.exports = router;

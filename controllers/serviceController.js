@@ -1,18 +1,21 @@
 "use strict";
-const { Service } = require("../models/index")
+const { Service } = require("../models/index");
 
 class Controller {
-    static listServices(req, res){
-        Service
-            .findAll()
-            .then(data => {
-                res.render("services.ejs", { data })
-            })
-            .catch(err => {
-                console.log(err)
-                res.send(err)
-            })
-    }
+  static formAddService(req, res) {
+    res.render("services/addForm");
+  }
+
+  static addService(req, res) {
+    const { name, price, imageUrl } = req.body;
+    Service.create({
+      name,
+      price,
+      imageUrl
+    })
+     .then(() => res.redirect("/"))
+     .catch(err => console.log(err))
+  }
 }
 
-module.exports = Controller
+module.exports = Controller;
