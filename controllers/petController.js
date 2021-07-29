@@ -1,6 +1,6 @@
 "use strict";
 const { Pet, Service, PetService, User} = require("../models/index");
-
+const { v4: uuidv4 } = require('uuid');
 class Controller {
   static viewFormAdd(req, res) {
     const serviceId = req.params.id;
@@ -28,6 +28,7 @@ class Controller {
         PetService.create({
           PetId: pet.id,
           ServiceId: serviceId,
+          uuid: uuidv4()
         })
         res.redirect("/")
       })
@@ -66,7 +67,8 @@ class Controller {
   static addMoreService(req, res) {
     PetService.create({
       PetId: req.body.PetId,
-      ServiceId: req.body.ServiceId
+      ServiceId: req.body.ServiceId,
+      uuid: uuidv4()
     })
       .then(() => res.redirect("/"))
       .catch(err => console.log(err))

@@ -7,10 +7,6 @@ class Controller {
     res.render("users/register");
   }
 
-  static successRegister(req, res) {
-    res.render("users/successRegister");
-  }
-
   static register(req, res) {
     const { name, email, password } = req.body;
     User.create({
@@ -18,7 +14,7 @@ class Controller {
       email,
       password,
     })
-      .then(() => res.redirect("/users/register/success"))
+      .then(() => res.redirect("/"))
       .catch((err) => res.send(err));
   }
 
@@ -40,6 +36,7 @@ class Controller {
         } else { 
             const isPasswordMatch = checkPassword(password, data.password)
             if(isPasswordMatch) {
+              req.session.isAdmin = data.role
               req.session.isLogin = true;
               req.session.userId = data.id
               res.redirect("/")

@@ -1,0 +1,50 @@
+<%- include("../partials/header.ejs") %> <%- include("../partials/navbar.ejs")
+%>
+<div class="d-flex justify-content-center mb-3">
+  <h1>All Pets</h1>
+</div>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Race</th>
+      <th>Owner</th>
+      <th>Service</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.forEach((el, i) => { %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= el.name %></td>
+      <td><%= el.type %></td>
+      <td><%= el.race %></td>
+      <td><%= el.User.name %></td>
+      <td>
+        <% el.Services.forEach((service, j) => { %>
+            <p><%= service.name %></p>
+        <% }) %>
+      </td>
+      <td>
+        <% el.Services.forEach((service, j) => { %>
+            <p><%= service.PetService.status %></p>
+        <% }) %>
+      </td>
+      <td>
+        <form action="/services/send-mail" method="POST">
+          <input type="hidden" name="petId" value="<%= el.id %>">
+          <input type="hidden" name="userId" value="<%= el.User.id %>">
+          <button type="submit" class="btn btn-primary">Send Mail</button>
+          <a href="#" class="btn btn-danger">Delete</a>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+<a href="/" class="btn btn-secondary">Back</a>
+<%- include("../partials/footer.ejs") %>

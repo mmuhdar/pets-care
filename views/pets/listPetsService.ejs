@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-center mb-3">
   <h1>List <%= data.name %></h1>
 </div>
-<table class="table table-bordered table-striped table-warning">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>No</th>
@@ -13,19 +13,25 @@
       <th>Race</th>
       <th>Service</th>
       <th>Status</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <% data.Pets.forEach((el, i) => { %>
-    <tr>
-      <td><%= i + 1 %></td>
-      <td><%= el.name %></td>
-      <td><%= el.type %></td>
-      <td><%= el.weight %></td>
-      <td><%= el.race %></td>
-      <td><%= data.name %></td>
-      <td><%= el.PetService.status %></td>
-    </tr>
+      <% if(el.PetService.status == "On Progress") { %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= el.name %></td>
+          <td><%= el.type %></td>
+          <td><%= el.weight %></td>
+          <td><%= el.race %></td>
+          <td><%= data.name %></td>
+          <td><%= el.PetService.status %></td>
+          <td>
+            <a href="/services/update/<%= el.PetService.uuid %>" class="btn btn-warning">Update Status</a>
+          </td>
+        </tr>
+      <% } %>
     <% }) %>
   </tbody>
 </table>
