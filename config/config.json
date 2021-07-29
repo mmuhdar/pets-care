@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "pets-care",
-    "host": "127.0.0.1",
+    "username": "oycefdvtrqirgb",
+    "password": "e0f501f99fa963c74d89f1fd1b48a294d954baeed6a6a04c7cd4751cf62d91e3",
+    "database": "d5fktdjqn37m2s",
+    "host": "ec2-3-233-7-12.compute-1.amazonaws.com",
     "dialect": "postgres"
   }
 }
