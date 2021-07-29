@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Pet.belongsTo(models.User, {foreignKey: "UserId"})
-      Pet.belongsToMany(models.Service, {through: models.PetService})
+      Pet.belongsToMany(models.Service, {through: models.PetService, foreignKey:"PetId"})
     }
   };
   Pet.init({
