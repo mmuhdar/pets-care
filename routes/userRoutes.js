@@ -3,8 +3,6 @@
 const router = require("express").Router();
 const UserController = require("../controllers/userController");
 
-// router.get("/login", UserController.list);
-router.get("/register/success", UserController.successRegister);
 router.get("/register", UserController.formRegister);
 router.post("/register", UserController.register);
 router.get("/login", UserController.formLogin);
