@@ -1,9 +1,10 @@
 "use strict";
 
 const router = require("express").Router()
+const Controller = require("../controllers/petController")
 
-router.get("/", (req, res) => {
-    res.send("masuk pets")
-})
+router.get("/", Controller.petList)
+router.get("/add", Controller.getAdd)
+// router.post("/add", Controller.postAdd)
 
 module.exports = router
