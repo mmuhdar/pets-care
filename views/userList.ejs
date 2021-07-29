@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pets Care</title>
+</head>
+<body>
+    <h2>Users List</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Pet List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach((el, i) => { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= el.name %></td>
+                    <td><%= el.email %></td>
+                    <td><%= el.role %></td>
+                    <td><a href="/users/<%= el.id %>">Show</a></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
